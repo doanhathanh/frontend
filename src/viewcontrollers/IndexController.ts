@@ -12,10 +12,23 @@ export class IndexController {
 
   constructor() {}
 
-  // test
   @Get()
   private async index(req: Request, res: Response, next: NextFunction): Promise<void> {
     Log.info(this.className, 'index', `RQ`);
+
+    try {
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      let html: string = FileUtil.ReadText(`views/index.html`);
+      res.end(html);
+    } catch (ex) {
+      console.log(ex);
+      next(ex);
+    }
+  }
+
+  @Get('list')
+  private async list(req: Request, res: Response, next: NextFunction): Promise<void> {
+    Log.info(this.className, 'list', `RQ`);
 
     try {
       const config: AxiosRequestConfig = {
@@ -32,7 +45,7 @@ export class IndexController {
       });
 
       res.writeHead(200, { 'Content-Type': 'text/html' });
-      let html: string = FileUtil.ReadText(`views/index.html`);
+      let html: string = FileUtil.ReadText(`views/list.html`);
       html = this.replace(html, 'RESULT', JSON.stringify(result.data));
       res.end(html);
     } catch (ex) {

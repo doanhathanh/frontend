@@ -5,76 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>User list</title>
+    <title>FRONTEND</title>
 
     <style>
         body {
             font-size: 16px;
         }
-
-        .tblDetail {
-            width: 100%;
-            border: 1px solid #999;
-            border-collapse: collapse;
-        }
-
-        .tblDetail > thead > tr > td {
-            font-weight: bold;
-            text-align: center;
-            background: #aaa;
-        }
-
-        .tblDetail td {
-            border: 1px solid #999;
-            padding: 5px;
-            background: #fff;
-        }
-
-        .red-color {
-            color: #ff0000;
-        }
     </style>
 </head>
 
 <body>
-    <table class="tblDetail">
-        <thead>
-            <tr>
-                <td>User ID</td>
-                <td>Email</td>
-            </tr>
-        </thead>
-        <tbody id="table-detail">
-        </tbody>
-    </table>
-
-    <!-- MAIN FUNCTION -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() { 
-            var result = JSON.parse('$(RESULT)$');
-            var list = result.data;
-            fillTable(list);
-        });
-
-        function fillTable(list) {
-            let html = '';
-            if (list.length === 0) {
-                html += `<tr>`;
-                html += `<td style="text-align:center;" colspan="2" class="red-color">No data</td>`;
-                html += `</tr>`;
-            } else {
-                for (let i = 0; i < list.length; i++) {
-                    const bo = list[i];
-                    html += `<tr>`;
-                    html += `<td style="text-align:center;width:60px;">${bo.id}</td>`;
-                    html += `<td>${bo.email}</td>`;
-                    html += `</tr>`;
-                }
-            }
-
-            document.getElementById("table-detail").innerHTML = html;
-        }
-    </script>
+    <h1>HELLO</h1>
 </body>
 
 </html>
