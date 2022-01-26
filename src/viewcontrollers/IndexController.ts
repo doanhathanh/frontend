@@ -19,6 +19,7 @@ export class IndexController {
     try {
       res.writeHead(200, { 'Content-Type': 'text/html' });
       let html: string = FileUtil.ReadText(`views/index.html`);
+      html = this.replace(html, 'PRIVATE_IP_SERVER', <string>process.env.PRIVATE_IP_SERVER);
       res.end(html);
     } catch (ex) {
       console.log(ex);
@@ -47,6 +48,7 @@ export class IndexController {
       res.writeHead(200, { 'Content-Type': 'text/html' });
       let html: string = FileUtil.ReadText(`views/list.html`);
       html = this.replace(html, 'RESULT', JSON.stringify(result.data));
+      html = this.replace(html, 'PRIVATE_IP_SERVER', <string>process.env.PRIVATE_IP_SERVER);
       res.end(html);
     } catch (ex) {
       console.log(ex);
